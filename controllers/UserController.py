@@ -10,7 +10,7 @@ class UserController:
         users = self.userRepository.getUsers()
         
         return jsonify([{
-            'user_id': user.id, 
+            'id': user.id, 
             'name': user.name, 
             'cpf': user.cpf, 
             'age': user.age
