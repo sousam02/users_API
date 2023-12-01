@@ -4,6 +4,8 @@
 # Users API
 
 This API was built using a great python framework: `Flask`, together with a `PostgreSQL` database.
+- Flask documentation: https://flask.palletsprojects.com/en/3.0.x/
+- PostgreSQL documentation: https://www.postgresql.org/docs/
 
 The API main sections are `Models/`, `Controllers/` and `Repositories/`
 
