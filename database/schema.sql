@@ -1,0 +1,10 @@
+CREATE DATABASE registrations;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE users (
+    id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+    name VARCHAR NOT NULL,
+    cpf VARCHAR NOT NULL,
+    age VARCHAR NOT NULL
+);

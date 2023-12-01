@@ -1,32 +1,49 @@
-# repositories/user_repository.py
 from models.UserModel import User
+from models.DatabaseModel import Database
 
 class UserRepository:
     def __init__(self):
-        self.users = []
+        self.db = Database()
 
     def getUsers(self):
-        return self.users
+        users = self.db.query("SELECT * FROM users", fetchall=True)
+
+        listUsers = []
+
+        for user in users:
+            listUsers.append(User(id=user[0],name=user[1], cpf=user[2], age=user[3]))
+
+        return listUsers
 
     def getUserById(self, userId):
-        return next((user for user in self.users if user.id == userId), None)
+        user = self.db.query("SELECT * FROM users WHERE id = %s", (userId,))
+
+        if user:
+            user = User(id=user[0],name=user[1], cpf=user[2], age=user[3])
+            return user
+        return None
 
     def createUser(self, user):
-        user.id = len(self.users) + 1
+        newUser = self.db.query("INSERT INTO users (name, cpf, age) VALUES (%s, %s, %s) RETURNING *", (user.name, user.cpf, user.age))
 
-        self.users.append(user)
-        return user
+        newUser = User(id=newUser[0],name=newUser[1], cpf=newUser[2], age=newUser[3])
+
+        return newUser
 
     def updateUser(self, userId, userData):
-        user = self.getUserById(userId)
-        user.name = userData.name
-        user.cpf = userData.cpf
-        user.age = userData.age
-        return user
+        updatedUser = self.db.query("UPDATE users SET name = %s, cpf = %s, age = %s WHERE id = %s RETURNING *", (userData.name, userData.cpf, userData.age, userId))
+        
+        updatedUser = User(id=updatedUser[0],name=updatedUser[1], cpf=updatedUser[2], age=updatedUser[3])
+        return updatedUser
 
     def deleteUser(self, userId):
-        self.users = [user for user in self.users if user.id != userId]
+        self.db.execute("DELETE FROM users WHERE id = %s", (userId,))
         return True
     
     def getUserByCpf(self, cpf):
-        return next((user for user in self.users if user.cpf == cpf), None)
+        user = self.db.query("SELECT * FROM users WHERE cpf = %s", (cpf,))
+
+        if user:
+            user = User(id=user[0],name=user[1], cpf=user[2], age=user[3])
+            return user
+        return None
