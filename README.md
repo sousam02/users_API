@@ -1,5 +1,7 @@
 
-﻿# Users API
+
+﻿
+# Users API
 
 This API was built using a great python framework: `Flask`, together with a `PostgreSQL` database.
 
@@ -80,6 +82,7 @@ We will use UUID, so we need to use the extension that implements it, and then c
     );
 
 ## Now you are able to consume the API
+- Navigate to users_API folder and execute `flask run`
 
 # Code structure
 ## The project is separated in 3 main folders
