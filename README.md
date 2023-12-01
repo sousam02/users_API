@@ -1,5 +1,6 @@
 
 
+
 ﻿
 # Users API
 
@@ -136,7 +137,7 @@ The REST API to the example app is described below.
     Content-Length: 70
     Connection: close
 
-    {"age": 28, "cpf": "10316782807", "id": dab9edf5-f3e1-4888-8c45-80f63542bd45, "name": "Maria"}
+    {"age": 21, "cpf": "99999999999", "id": dab9edf5-f3e1-4888-8c45-80f63542bd45, "name": "Moises"}
 
 ## Get user by id
 
@@ -154,7 +155,7 @@ The REST API to the example app is described below.
     Content-Type: application/json
     Content-Length: 70
 
-    {"age": 28,"cpf": "10316782807","id": dab9edf5-f3e1-4888-8c45-80f63542bd45, "name": "Maria"}
+    {"age": 21,"cpf": "99999999999","id": dab9edf5-f3e1-4888-8c45-80f63542bd45, "name": "Moises"}
 
 ## Get a non-existent user
 
@@ -201,7 +202,8 @@ The REST API to the example app is described below.
 
 `PUT /thing/:id`
 
-    curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Moises Ferreira\", \"cpf\":\"99999999999\", \"age\":\"21\"}" http://127.0.0.1:5000/users/dab9edf5-f3e1-4888-8c45-80f63542bd45
+    (WINDOWS) curl -X PUT -H "Content-Type: application/json" -d "{\"name\":\"Moises Ferreira\", \"cpf\":\"99999999999\", \"age\":\"21\"}" http://127.0.0.1:5000/users/dab9edf5-f3e1-4888-8c45-80f63542bd45
+    (LINUX) curl -X PUT -H "Content-Type: application/json" -d '{"name":"Moises Ferreira", "cpf":"99999999999", "age":21}' http://127.0.0.1:5000/users/dab9edf5-f3e1-4888-8c45-80f63542bd45
 
 ### Response
 
