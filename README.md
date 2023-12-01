@@ -10,7 +10,7 @@ This API was built using a great python framework: `Flask`, together with a `Pos
 The API main sections are `Models/`, `Controllers/` and `Repositories/`
 
 ## This API was built with
-- Python 3.11 (https://www.python.org/downloads/release/python-3116/)
+- Python 3.12 (https://www.python.org/downloads/release/python-3120/)
 
 # Steps to configure enviroment
 
